@@ -33,8 +33,7 @@ module.exports.routes = {
   ***************************************************************************/
 
   '/': { view: 'index' },
-  'get /signup' : { view:'user/userSignup'},
-  'get /isignup' : { view: 'user/investorSignup'}
+  'get /signup' : { view:'user/userSignup'}
   
 
   /***************************************************************************
