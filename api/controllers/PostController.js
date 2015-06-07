@@ -25,6 +25,7 @@ module.exports = {
         req.file('pdflink').upload({
             maxBytes: 10000000
         }, function whenDone(err, files) {
+            console.log(JSON.stringify(files));
             var ext, fileID, pid = 0;
             if (err) {
                 return res.redirect('/enlink');
@@ -113,12 +114,12 @@ module.exports = {
     },
 
     search: function(req, res){
-        var key = req.param('keyword');
-        console.log(key);
-        cps.search([{content:key}],function(err, result){
-            return res.view('search',{
-                result: result
+        var kword = req.param('keyword');
+        cps.search([{content:kword}],function(err, result){
+            if(!err) return res.view('search',{
+                result: result.results.document
             });
+            else return res.redirect('/enlink');
         });
     }
 
