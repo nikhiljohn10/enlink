@@ -31,16 +31,39 @@
     <!--STYLES-->
     <link rel="stylesheet" href="/styles/bootstrap.css">
     <link rel="stylesheet" href="/styles/importer.css">
+    <link rel="stylesheet" href="/styles/roundbutton.css">
+    <link rel="stylesheet" href="/styles/star-rating.min.css">
     <link rel="stylesheet" href="/styles/styles.css">
     <!--STYLES END-->
   </head>
 
   <body>
-    <!--nav class="navbar navbar-default navbar-fixed-top">
-      <div class="container">
-        
-      </div>
-    </nav -->
+    <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">EnLink</a>
+                </div>
+                <div>
+                    <ul class="nav navbar-nav">
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <form class="navbar-form" role="search">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Search" name="search" id="search">
+                                    <div class="input-group-btn">
+                                        <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                                    </div>
+                                </div>
+                            </form>
+                        </li>
+                      <% if(req.session.me){ %>  <li>
+                            <a href="/logout" title="logout"><i class="glyphicon glyphicon-off"></i></a>
+                        </li> <% } %>
+                    </ul>
+                </div>
+            </div>
+        </nav>
     <%- body %>
 
 
@@ -97,7 +120,9 @@
     <!--SCRIPTS-->
     <script src="/js/dependencies/sails.io.js"></script>
     <script src="/js/dependencies/jquery-1.11.3.min.js"></script>
+    <script src="/js/dependencies/bootstrap-filestyle.min.js"></script>
     <script src="/js/dependencies/bootstrap.js"></script>
+    <script src="/js/dependencies/star-rating.min.js"></script>
     <script src="/js/main.js"></script>
     <!--SCRIPTS END-->
   </body>

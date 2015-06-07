@@ -1,0 +1,94 @@
+<form id="enableForm" class="container" action="/signup" method="post" data-toggle="validator" role="form">
+    <div class="row">
+        <div class="col-xs-7">
+            <br>
+            <br>
+            <br>
+            <div class="row form-group">
+                <div class="col-xs-7 col-xs-offset-2">
+                    <input type="text" name="username" class="form-control" placeholder="Username" required>
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-xs-7 col-xs-offset-2">
+                    <input type="email" name="email" class="form-control" placeholder="Email" required>
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-xs-7 col-xs-offset-2">
+                    <input type="password" name="password" id="inputPassword" data-minlength="6" class="form-control" placeholder="Password" required>
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-xs-7 col-xs-offset-2">
+                    <input type="password" name="cpassword" class="form-control" data-match="#inputPassword" data-match-error="Whoops, these don't match"  placeholder="Confirm Password" required>
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-xs-7 col-xs-offset-2">
+                    <button type="submit" class="btn btn-default">Signup</button>
+                </div>
+            </div>
+        </div>
+        
+<script>
+$(document).ready(function() {
+    $('#enableForm')
+        .formValidation({
+            framework: 'bootstrap',
+            icon: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+                full_name: {
+                    validators: {
+                        notEmpty: {
+                            message: 'The full name is required and cannot be empty'
+                        }
+                    }
+                },
+                password: {
+                    enabled: false,
+                    validators: {
+                        notEmpty: {
+                            message: 'The password is required and cannot be empty'
+                        }
+                    }
+                },
+                confirm_password: {
+                    enabled: false,
+                    validators: {
+                        notEmpty: {
+                            message: 'The confirm password is required and cannot be empty'
+                        },
+                        identical: {
+                            field: 'password',
+                            message: 'The password and its confirm must be the same'
+                        }
+                    }
+                }
+            }
+        })
+        // Enable the password/confirm password validators if the password is not empty
+        .on('keyup', '[name="password"]', function() {
+            var isEmpty = $(this).val() == '';
+            $('#enableForm')
+                    .formValidation('enableFieldValidators', 'password', !isEmpty)
+                    .formValidation('enableFieldValidators', 'confirm_password', !isEmpty);
+
+            // Revalidate the field when user start typing in the password field
+            if ($(this).val().length == 1) {
+                $('#enableForm').formValidation('validateField', 'password')
+                                .formValidation('validateField', 'confirm_password');
+            }
+        });
+});
+</script>
+        <div class="col-xs-5">
+            <a href="#"><img src="/images/logo.png" class="img-circle" width="125" height="125" alt="Profile Pic"></a>
+        </div>
+    </div>
+    </div>
+</form>

@@ -33,12 +33,16 @@ module.exports.routes = {
   ***************************************************************************/
 
   '/': { view: 'index' },
-  'get /signup' : { view:'user/userSignup'},
+  'get /signin' : { view:'user/signin'},
+  'get /signup' : { view:'user/signup'},
+  'get /profile' : { view:'user/profile'},
+  'get /enlink' : { view:'enlink'},
+  'get /upload' : { view:'upload'},
   'post /signup' : 'User.signup',
   'post /signin' : 'User.signin',
-  '/auth/linkedin' : 'Auth.linkedin'
+  'post /profile' : 'User.profile',
+  '/logout' : 'User.logout'
   
-
   /***************************************************************************
   *                                                                          *
   * Custom routes here...                                                    *

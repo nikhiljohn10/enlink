@@ -1,0 +1,18 @@
+<form role="form" action="/post/add" method="post">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-10">
+        <div class="panel panel-primary">
+            <div class="panel-heading">My updates</div>
+            <div class="panel-body"><textarea class="form-control" name="content"></textarea></div>
+            <div class="panel-footer">
+                <div class="col-sm-2"><select class="form-control"><option value="public" selected >Public</option><option value="private">Private</option></select></div>
+                <div class="col-sm-2"><input type="file" class="filestyle" data-buttonText="Upload PDF" data-input="false"></div>
+                <label class="radio-inline"><input type="radio" name="tag" value="idea">Idea</label>
+                <label class="radio-inline"><input type="radio" name="tag" value="jpb">Job</label>
+                <label class="radio-inline"><input type="radio" name="tag" value="product">Product</label>
+                &nbsp;&nbsp;<button type="submit" class="btn btn-primary">EnLink</button>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-1"></div>
+</form>

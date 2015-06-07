@@ -4,14 +4,15 @@ var CPSDB = require('../services/CPSDB');
 var cps = CPSDB.init();
 cps.connect('enlink_users', 'document', 'document/id');
 module.exports = function login(inputs) {
-    inputs = inputs || {};
+    var input = inputs || {};
     var req = this.req;
     var res = this.res;
     bcrypt.hash(input.password, salt, function(err, hash) {
         cps.search([{
-            email: input.email,
+            username: input.username,
             password: hash
         }], function(err, user) {
+            console.log(user.results.document[0]);
             if (err) return res.negotiate(err);
             if (!user) {
 
@@ -20,8 +21,7 @@ module.exports = function login(inputs) {
                 }
                 return res.redirect(inputs.invalidRedirect);
             }
-            req.session.me = user.id;
-            req.session.admin = user.isAdmin
+            req.session.me = user.results.document[0].id;
             if (req.wantsJSON || !inputs.successRedirect) {
                 return res.ok();
             }

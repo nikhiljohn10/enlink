@@ -24,10 +24,9 @@ module.exports = {
                 password: hash
             }, function(err, user) {
                 if (err) return res.negotiate(err);
-                console.log(user);
-                req.session.me = user.id;
-                req.session.admin = user.isAdmin
-                return res.redirect('/');
+                console.log(user.document);
+                req.session.me = user.document[0].id;
+                return res.redirect('/profile');
             });
         });
 
@@ -35,26 +34,36 @@ module.exports = {
 
     signin: function(req, res) {
         return res.login({
-            email: req.param('email'),
+            username: req.param('username'),
             password: req.param('password'),
-            successRedirect: '/',
+            successRedirect: '/enlink',
             invalidRedirect: '/login'
         });
     },
 
     logout: function(req, res) {
-        return res.json({
-            todo: 'logout() is not implemented yet!'
-        });
+        req.session.me = null;
+        req.session.admin = false;
+        return res.redirect('/');
     },
 
     profile: function(req, res) {
         var name = req.param('name');
         var about = req.param('about');
-        var locaition = req.param('locaition');
+        var location = req.param('location');
+        var url = req.param('url');
         var category = req.param('category');
-        return res.json({
-            todo: 'logout() is not implemented yet!'
+        cps.update({
+            id: req.session.me+"",
+            name: name,
+            about: about,
+            location: location,
+            linkedinUrl: url,
+            category: category
+        }, function(err, user) {
+            if (err) return res.negotiate(err);
+            console.log(user.document);
+            return res.redirect('/enlink');
         });
     }
 };

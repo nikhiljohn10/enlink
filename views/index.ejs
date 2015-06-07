@@ -1,1 +1,7 @@
-hello <a href="/auth/linkedin">Linkedin</a>
+hello! 
+<% if(req.session.me){ %>
+	Hey. Your are looged in.<a href="/logout">Logout</a>
+
+<% } else { %>
+	<a href="/signin">Signin</a> | <a href="/signup">Signup</a>
+<% } %>

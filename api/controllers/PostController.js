@@ -11,7 +11,7 @@ module.exports = {
 
 
     /**
-     * `PostController.fav()`
+     * `PostController.fav()`    /post/fav
      */
     fav: function(req, res) {
         var id = req.param('postid');
@@ -26,9 +26,10 @@ module.exports = {
     add: function(req, res) {
         var user = req.param('username');
         var timestamp = new Date().toISOString();
+        var content = req.param('content');
         var pub = false;
         var tag = req.param('tag');
-        if (req.param('public') == 'on') pub = true;
+        if (req.param('public') == 'public') pub = true;
         req.file('pdflink').upload({
             maxBytes: 10000000
         }, function whenDone(err, files) {
@@ -68,7 +69,7 @@ module.exports = {
 
 
     /**
-     * `PostController.addLike()`
+     * `PostController.addLike()`   /post/addLike
      */
     addLike: function(req, res) {
         var id = req.param('postid');
@@ -79,9 +80,9 @@ module.exports = {
 
 
     /**
-     * `PostController.comment()`
+     * `PostController.comment()`  
      */
-    comment: function(req, res) {
+    comment: function(req, res) {   
         var id = req.param('postid');
         var comment = req.param('comment');
         return res.json({
