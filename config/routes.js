@@ -33,7 +33,10 @@ module.exports.routes = {
   ***************************************************************************/
 
   '/': { view: 'index' },
-  'get /signup' : { view:'user/userSignup'}
+  'get /signup' : { view:'user/userSignup'},
+  'post /signup' : 'User.signup',
+  'post /signin' : 'User.signin',
+  '/auth/linkedin' : 'Auth.linkedin'
   
 
   /***************************************************************************
