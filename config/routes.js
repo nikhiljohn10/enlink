@@ -35,12 +35,14 @@ module.exports.routes = {
   '/': { view: 'index' },
   'get /signin' : { view:'user/signin'},
   'get /signup' : { view:'user/signup'},
-  'get /profile' : { view:'user/profile'},
-  'get /enlink' : { view:'enlink'},
-  'get /upload' : { view:'upload'},
+  'get /profile' : 'User.profile',
+  'get /enlink' : 'Post.enlink',
+  'get /upload' : 'Post.upload',
+  'get /search' : 'User.search',
   'post /signup' : 'User.signup',
   'post /signin' : 'User.signin',
-  'post /profile' : 'User.profile',
+  'post /profile' : 'Post.profile',
+  'post /search' : 'Post.search',
   '/logout' : 'User.logout'
   
   /***************************************************************************

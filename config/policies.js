@@ -29,17 +29,13 @@ module.exports.policies = {
   '*': true,
   UserController: {
     '*' : 'isAuthenticated',
-    login: true,
+    signin: true,
     signup: true
   },
   PostController:{
     '*' : 'isAuthenticated',
     rate: 'isAdmin'
-  },
-  AdminController: {
-    '*': 'isAdmin'
   }
-
   /***************************************************************************
   *                                                                          *
   * Here's an example of mapping some policies to run before a controller    *

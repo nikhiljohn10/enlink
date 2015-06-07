@@ -44,11 +44,10 @@
                     <a class="navbar-brand" href="#">EnLink</a>
                 </div>
                 <div>
-                    <ul class="nav navbar-nav">
-                    </ul>
+                      <% if(req.session.me){ %> 
                     <ul class="nav navbar-nav navbar-right">
                         <li>
-                            <form class="navbar-form" role="search">
+                            <form class="navbar-form" role="search" action="/search" method="post">
                                 <div class="input-group">
                                     <input type="text" class="form-control" placeholder="Search" name="search" id="search">
                                     <div class="input-group-btn">
@@ -57,10 +56,20 @@
                                 </div>
                             </form>
                         </li>
-                      <% if(req.session.me){ %>  <li>
+                       <li>
                             <a href="/logout" title="logout"><i class="glyphicon glyphicon-off"></i></a>
-                        </li> <% } %>
+                        </li> 
                     </ul>
+                        <% } else { %> 
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="/signin" style="height: 40px; vertical-align:middle; margin-top:5px; margin-right:10px; min-width:100px; line-height:5px;" class="btn btn-default">Signin</a>
+                        </li>
+                       <li>
+                            <a href="/signup" style="height: 40px; vertical-align:middle; margin-top:5px; margin-right:10px; min-width:100px; line-height:5px;" class="btn btn-default">Signup</a>
+                        </li> 
+                    </ul>
+                        <% } %>
                 </div>
             </div>
         </nav>

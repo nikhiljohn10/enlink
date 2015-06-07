@@ -6,6 +6,6 @@ module.exports = function isAuth(req, res, next) {
             res.redirect('/enlink');
         }
     } else {
-        res.redirect('/');
+        res.redirect('/signin');
     }
 };

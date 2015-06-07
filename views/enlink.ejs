@@ -1,23 +1,10 @@
 <form role="form" action="/enlink" method="post">
     <div class="col-sm-1"></div>
     <div class="col-sm-10">
-        <div class="panel panel-primary">
-            <div class="panel-heading"><div class="col-sm-11">Idea</div><div class="col-sm-1"><button type="button" class="btn btn-danger favon" data-id="1234"><i class="glyphicon glyphicon-heart"></i></button></div>&nbsp;</div>
-            <div class="panel-body"><textarea class="form-control"></textarea></div>
-            <div class="panel-footer">
-                <script>$("#starrating").rating();</script>
-                <div class="col-sm-11"><input id="starrating" type="number" class="rating" min=0 max=5 data-default-caption="{rating} EnLink Rating" data-star-captions="{}" readonly data-size="sm" data-stars="5" value="4"></div>
-                <div class="col-sm-1">
-                    <a href="#" class="btn btn-info btn-lg voteup" data-id="1234">
-                        <span class="glyphicon glyphicon-thumbs-up"></span>
-                    </a>
-                </div>&nbsp;
-            </div>
-        </div>
     </div>
     <div class="col-sm-1"></div>
 </form>
-
+<div class="col-sm-11"></div><div class="col-sm-1"><a type="button" href="/upload" class="btn btn-danger btn-circle" style="bottom: 45px; right: 24px;position: fixed"><i class="glyphicon glyphicon-plus"></i></a></div>
 <script>
     $(function () {
         $("#starrating").rating();
